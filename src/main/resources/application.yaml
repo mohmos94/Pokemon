@@ -1,0 +1,19 @@
+Spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pokemon
+    username: postgres
+    password: postgres
+
+---
+Spring:
+  flyway:
+    enabled: true
+    locations: classpath:db/migrations
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
+api:
+  version: 1
