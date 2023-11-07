@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -56,7 +57,9 @@ public class PokemonController {
             @Pattern(regexp = "^[a-z]+$", message = "Pokemon names must start with lowercase letters")
             String pokemonName
     ) {
-        return ResponseEntity.ok(pokemonService.getPokemon(pokemonName));
+        HttpHeaders responseHeaders = new HttpHeaders();
+        responseHeaders.set("request-header-sucsess", "${header.path}");
+        return new ResponseEntity<>(pokemonService.getPokemon(pokemonName), responseHeaders, 200);
     }
 
     @Operation(summary = "Display all pokemon",

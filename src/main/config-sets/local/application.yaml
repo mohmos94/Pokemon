@@ -18,7 +18,7 @@ management:
 api:
   version: 1
 
+---
 
-
-header:
-  path: ./config-sets/local/token-header
+tokenGenerator:
+  path: src/main/local/token-header

@@ -21,6 +21,7 @@ public class PokemonServiceImplementation implements PokemonService {
 
     @Override
     public PokemonListRest pokemonList() {
+
         return pokemonRestAdapter.pokemonList();
     }
 
